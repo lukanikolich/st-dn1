@@ -1,0 +1,61 @@
+/*
+FF0000 red
+CC0000 red
+3B4CCA blue
+FFDE00 yellow
+B3A125 gold
+*/
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  text-align: right;
+  height: 100vh;
+  background-color: #3b4cca;
+}
+
+.text-header {
+  flex: 1;
+  justify-content: center;
+  text-align: center;
+}
+
+.title {
+  padding: 50%;
+}
+
+.model-header {
+  flex: 1;
+  margin: 0;
+  height: 100%;
+}
+
+.gallery {
+  max-width: 1500px;
+  height: auto;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery model-viewer {
+  height: 400px;
+  margin: 10px;
+  background-color: #3b4cca;
+  border-radius: 25px;
+}
+
+.gallery model-viewer:hover {
+  background-color: #ffde00;
+  transition: 0.5s;
+}
