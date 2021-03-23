@@ -11,13 +11,54 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: linear-gradient(#3b4cca, #ffffff);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  border-radius: 25px;
+  border: 2px solid;
+  padding: 10px;
+  opacity: 0.8;
+  color: #ffffff;
+}
+
+.btn-default {
+  background: #ffffff;
+  border-color: #424642;
+  color: #424642;
+}
+
+.btn-primary {
+  background: #3b4cca;
+  border-color: #3b4cca;
+}
+
+.btn-danger {
+  background: #ff0000;
+  border-color: #ff0000;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+button:focus {
+  outline: none;
+}
+
+h1 {
+  color: #ffde00;
+}
+
+p {
+  color: #ffffff;
 }
 
 header {
   display: flex;
-  text-align: right;
   height: 100vh;
-  background-color: #3b4cca;
+  flex-direction: column;
 }
 
 .text-header {
@@ -27,13 +68,48 @@ header {
 }
 
 .title {
-  padding: 50%;
+  padding: 50% 0;
 }
 
 .model-header {
   flex: 1;
-  margin: 0;
   height: 100%;
+  margin: 0;
+}
+
+.model-header model-viewer {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  padding: 40px;
+  margin: 0 auto;
+  max-width: 1500px;
+  text-align: center;
+}
+
+.container#blur.active {
+  filter: blur(20px);
+}
+
+#searchWrapper {
+  position: relative;
+}
+
+#searchBar {
+  width: 50%;
+  height: 32px;
+  border-radius: 3px;
+  border: 1px solid #eaeaea;
+  padding: 5px 10px;
+  font-size: 12px;
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+
+#searchBar:focus {
+  outline: none;
 }
 
 .gallery {
@@ -51,11 +127,64 @@ header {
 .gallery model-viewer {
   height: 400px;
   margin: 10px;
-  background-color: #3b4cca;
+  background-color: #ffffff;
   border-radius: 25px;
 }
 
 .gallery model-viewer:hover {
   background-color: #ffde00;
   transition: 0.5s;
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  padding: 50px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 10);
+  background: #ffffff;
+  transition: 0.5s;
+}
+
+.form-popup.active {
+  top: 50%;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.col-25 {
+  float: left;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 100%;
+  margin-top: 0;
+}
+
+@media (min-width: 800px) {
+  header {
+    flex-direction: row;
+  }
+  .col-25 {
+    width: 25%;
+    margin-top: 6px;
+  }
+  .col-75 {
+    width: 75%;
+    margin-top: 6px;
+  }
 }
