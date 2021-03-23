@@ -24,6 +24,8 @@
         camera-controls
         disable-zoom
         data-js-focus-visible
+        auto-rotate
+        auto-rotate-delay="0"
         interaction-prompt="none"
         src="assets/pokeball.gltf"
         ios-src="assets/pokeball.usdz"
@@ -38,12 +40,18 @@
         id="searchBar"
         placeholder="search for a Pokemon"
       />
+      <button class="btn-warning" onclick="myCollection()" id="my-collection">
+        My Collection
+      </button>
     </div>
     <div class="gallery"></div>
+    <!--
     <button class="btn-primary" onclick="openForm();toggle()">
       Add Pokemon
     </button>
+    -->
   </div>
+  <!--
   <div class="form-popup">
     <form class="form-container">
       <div class="col-25">
@@ -69,12 +77,13 @@
       <div class="col-75">
         <input type="file" id="usdz-file" accept=".usdz" name="usdz-file" />
       </div>
-      <button type="submit" class="btn-primary">Add</button>
+      <button type="button" class="btn-primary" id="add-btn">Add</button>
       <button type="button" class="btn-default" onclick="closeForm();toggle()">
         Close
       </button>
     </form>
   </div>
+  -->
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

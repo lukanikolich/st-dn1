@@ -39,6 +39,11 @@ button {
   border-color: #ff0000;
 }
 
+.btn-warning {
+  background: #b3a125;
+  border-color: #b3a125;
+}
+
 button:hover {
   opacity: 1;
 }
@@ -131,6 +136,10 @@ header {
   border-radius: 25px;
 }
 
+model-viewer.user-have {
+  background-color: #3b4cca;
+}
+
 .gallery model-viewer:hover {
   background-color: #ffde00;
   transition: 0.5s;
@@ -146,12 +155,6 @@ header {
   padding: 50px;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 10);
   background: #ffffff;
-  transition: 0.5s;
-}
-
-.form-popup.active {
-  top: 50%;
-  opacity: 1;
   transition: 0.5s;
 }
 
