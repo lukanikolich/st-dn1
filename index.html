@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
   </head>
+
+  <!--LANDING PAGE-->
   <header>
     <div class="text-header">
       <div class="title">
@@ -45,45 +51,46 @@
       </button>
     </div>
     <div class="gallery"></div>
-    <!--
-    <button class="btn-primary" onclick="openForm();toggle()">
-      Add Pokemon
-    </button>
-    -->
+    <button class="btn-primary" onclick="openForm()">Add Note</button>
   </div>
-  <!--
+
+  <!--ADD NOTE FORM-->
   <div class="form-popup">
     <form class="form-container">
       <div class="col-25">
-        <label for="name">Name</label>
+        <label for="names">Pokemon</label>
       </div>
       <div class="col-75">
-        <input type="text" id="name" placeholder="Enter Name" name="name" />
+        <select id="names"></select>
       </div>
       <div class="col-25">
-        <label for="gltf-file">glTF file</label>
+        <label for="note">note</label>
       </div>
       <div class="col-75">
-        <input
-          type="file"
-          id="gltf-file"
-          accept=".gltf,.glb"
-          name="gltf-file"
-        />
+        <textarea id="note" rows="4"></textarea>
       </div>
-      <div class="col-25">
-        <label for="usdz-file">USDZ file</label>
-      </div>
-      <div class="col-75">
-        <input type="file" id="usdz-file" accept=".usdz" name="usdz-file" />
-      </div>
-      <button type="button" class="btn-primary" id="add-btn">Add</button>
-      <button type="button" class="btn-default" onclick="closeForm();toggle()">
+      <button
+        type="button"
+        class="btn-primary"
+        id="add-btn"
+        onclick="addNote();"
+      >
+        Add
+      </button>
+      <button type="button" class="btn-default" onclick="closeForm()">
         Close
       </button>
     </form>
   </div>
-  -->
+
+  <!--NOTES POPUP-->
+  <div class="notes-popup">
+    <div id="notes"></div>
+    <button type="button" class="btn-default" onclick="closeNotes()">
+      Close
+    </button>
+  </div>
+
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
