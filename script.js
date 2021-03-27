@@ -9,12 +9,15 @@ function domShowPokemon(pokemonList) {
     const card = document.createElement("div");
     const addButton = document.createElement("button");
     const noteButton = document.createElement("button");
+    const mapButton = document.createElement("button");
     const addIcon = document.createElement("i");
     const noteIcon = document.createElement("i");
+    const mapIcon = document.createElement("i");
     const name = document.createElement("h2");
     name.innerHTML = pokemon.name;
-    addIcon.classList.add("fa", "fa-plus");
-    noteIcon.classList.add("fa", "fa-sticky-note");
+    addIcon.classList.add("fas", "fa-plus");
+    noteIcon.classList.add("fas", "fa-sticky-note");
+    mapIcon.classList.add("fas", "fa-map-marked-alt");
     const modelViewer = document.createElement("model-viewer");
     modelViewer.setAttribute("src", pokemon.src);
     modelViewer.setAttribute("srcios", pokemon.srcios);
@@ -27,32 +30,38 @@ function domShowPokemon(pokemonList) {
     if (pokemon.name in userHave && userHave[pokemon.name] === true) {
       modelViewer.classList.add("user-have");
       addIcon.classList.remove("fa-plus");
-      addIcon.classList.add("fa-close");
+      addIcon.classList.add("fa-times");
     }
     addButton.onclick = () => {
       const have = changeHave(pokemon);
       if (have) {
         modelViewer.classList.add("user-have");
         addIcon.classList.remove("fa-plus");
-        addIcon.classList.add("fa-close");
+        addIcon.classList.add("fa-times");
       } else {
         modelViewer.classList.remove("user-have");
-        addIcon.classList.remove("fa-close");
+        addIcon.classList.remove("fa-times");
         addIcon.classList.add("fa-plus");
       }
     };
     noteButton.onclick = () => {
       openNotes(pokemon);
     };
+    mapButton.onclick = () => {
+      getLocation();
+    };
     addButton.classList.add("btn-primary");
     noteButton.classList.add("btn-warning");
+    mapButton.classList.add("btn-danger", "map-btn");
     addButton.appendChild(addIcon);
     noteButton.appendChild(noteIcon);
+    mapButton.appendChild(mapIcon);
     card.classList.add("card");
     card.appendChild(name);
     card.appendChild(modelViewer);
     card.appendChild(addButton);
     card.appendChild(noteButton);
+    card.appendChild(mapButton);
     gallery.appendChild(card);
   }
 }
@@ -72,6 +81,10 @@ function openForm() {
 function closeForm() {
   toggle();
   document.querySelector(".form-popup").style.display = "none";
+  warning = document.querySelector("#warning");
+  if (warning !== null) {
+    warning.remove();
+  }
 }
 
 function toggle() {
@@ -88,6 +101,10 @@ function addNote() {
   let note = document.querySelector("#note").value;
   if (note.length === 0) {
     console.log("You can't add empty note");
+    warning = document.createElement("div");
+    warning.setAttribute("id", "warning");
+    warning.innerHTML = "You can't add empty note";
+    document.querySelector(".form-popup").appendChild(warning);
     return;
   }
   if (key in notes) {
@@ -96,6 +113,7 @@ function addNote() {
     notes[key] = [note];
   }
   localStorage.setItem("notes", JSON.stringify(notes));
+  note.value = "";
   closeForm();
 }
 
@@ -128,6 +146,7 @@ function openNotes(pokemon) {
 function closeNotes() {
   toggle();
   document.querySelector(".notes-popup").style.display = "none";
+  document.querySelector("#notes").innerHTML = "";
 }
 
 function changeHave(pokemon) {
@@ -166,6 +185,43 @@ function myCollection() {
     myCollectionElement.classList.remove("btn-default");
     myCollectionElement.classList.add("btn-warning");
   }
+}
+
+function getLocation() {
+  document.querySelector("#map").style.display = "block";
+  $([document.documentElement, document.body]).animate(
+    {
+      scrollTop: $("#map").offset().top,
+    },
+    500
+  );
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(initMap);
+  }
+}
+
+function initMap(position) {
+  const lat = Math.random() * -0.01 + 0.005;
+  const lng = Math.random() * -0.01 + 0.005;
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: {
+      lat: position.coords.latitude + lat,
+      lng: position.coords.longitude + lng,
+    },
+    zoom: 17,
+  });
+  const icon = {
+    url: "assets/pokeball_img.svg", // url
+    scaledSize: new google.maps.Size(50, 50), // scaled size
+  };
+  const marker = new google.maps.Marker({
+    position: new google.maps.LatLng(
+      position.coords.latitude + lat,
+      position.coords.longitude + lng
+    ),
+    icon: icon,
+    map: map,
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {

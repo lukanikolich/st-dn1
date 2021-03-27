@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
     />
     <script
       type="module"
@@ -21,7 +21,7 @@
     <div class="text-header">
       <div class="title">
         <h1>PokemonAR</h1>
-        <p>Search for Pokemon and view it in life size</p>
+        <p>Choose and catch Pokemon around you</p>
         <button class="btn-danger" id="check-pokemon">Check Pokemon</button>
       </div>
     </div>
@@ -53,6 +53,8 @@
     <div class="gallery"></div>
     <button class="btn-primary" onclick="openForm()">Add Note</button>
   </div>
+  <div id="map"></div>
+  <footer><a href="sources.html">sources</a></footer>
 
   <!--ADD NOTE FORM-->
   <div class="form-popup">
@@ -95,6 +97,10 @@
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaqponbefHh1WJwej88UGKXBJ80_hXTs0&libraries=&v=weekly"
+    async
   ></script>
   <script src="pokemonList.js"></script>
   <script src="script.js"></script>

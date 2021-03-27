@@ -6,6 +6,10 @@ FFDE00 yellow
 B3A125 gold
 */
 
+*:focus {
+  outline: none;
+}
+
 body,
 html {
   margin: 0;
@@ -13,6 +17,14 @@ html {
   box-sizing: border-box;
   background: linear-gradient(#3b4cca, #8892da);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+footer {
+  text-align: center;
+  color: #ffffff;
+  background-color: #3b4cca;
+  height: 100px;
+  line-height: 100px;
 }
 
 button {
@@ -49,20 +61,17 @@ button:hover {
   opacity: 1;
 }
 
-button:focus {
-  outline: none;
-}
-
 h1 {
   color: #ffde00;
+  font-size: 40px;
 }
 
 h2 {
   margin: 0;
 }
 
-p {
-  color: #000000;
+.title p {
+  color: #ffffff;
 }
 
 header {
@@ -75,10 +84,16 @@ header {
   flex: 1;
   justify-content: center;
   text-align: center;
+  position: relative;
 }
 
 .title {
-  padding: 50% 0;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .model-header {
@@ -116,10 +131,6 @@ header {
   font-size: 12px;
   box-sizing: border-box;
   border-radius: 25px;
-}
-
-#searchBar:focus {
-  outline: none;
 }
 
 .gallery {
@@ -182,6 +193,15 @@ model-viewer.user-have {
   border-radius: 25px;
 }
 
+#warning {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 25px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
 .note-elt {
   border-bottom: 2px solid #3b4cca;
 }
@@ -192,6 +212,26 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+}
+
+#map {
+  display: none;
+  height: 100vh;
+}
+
+select,
+textarea {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #3b4cca;
+  padding: 5px 10px;
+  font-size: 12px;
+  box-sizing: border-box;
+  border-radius: 25px;
+}
+
+#sources {
+  height: 100vh;
 }
 
 .col-25 {
@@ -207,6 +247,9 @@ input {
 }
 
 @media (min-width: 800px) {
+  h1 {
+    font-size: 60px;
+  }
   header {
     flex-direction: row;
   }
